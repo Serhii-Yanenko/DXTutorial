@@ -3,5 +3,6 @@
 
 class WindowContainer
 {
+protected:
 	RenderWindow _renderWindow;
 };

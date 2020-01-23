@@ -1,6 +1,4 @@
-﻿  ErrorLogger.cpp
+﻿  Engine.cpp
   main.cpp
-  RenderWindow.cpp
-  StringConverter.cpp
   Generating Code...
-  EngineTutorial.vcxproj -> D:\JPressDirectX\EngineTutorial\x64\Debug\EngineTutorial.exe
+  EngineTutorial.vcxproj -> D:\JPressDirectX\checkouts\DXTutorial\EngineTutorial\x64\Debug\EngineTutorial.exe
