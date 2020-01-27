@@ -1,8 +1,8 @@
 #include "Engine.h"
 
-bool Engine::Initialize(HINSTANCE hInstance, std::string windowTitle, std::string windowClass, int width, int height)
+bool Engine::Initialize( HINSTANCE hInstance, std::string windowTitle, std::string windowClass, int width, int height)
 {
-	return this->_renderWindow.Initialize(hInstance, windowTitle, windowClass, width, height);
+	return this->_renderWindow.Initialize(this, hInstance, windowTitle, windowClass, width, height);
 }
 
 bool Engine::ProcessMessages()
