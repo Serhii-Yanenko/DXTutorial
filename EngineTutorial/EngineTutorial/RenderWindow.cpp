@@ -12,11 +12,12 @@ LRESULT CALLBACK HandleMsgRedirect(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM  
 		return pWindow->WindowProc(hwnd, uMsg, wParam, lParam);
 	}
 }
-LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK HandleMessageSetup(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (uMsg)
 	{
 	case WM_NCCREATE:
+	{
 		const CREATESTRUCTW* const pCreate = reinterpret_cast<CREATESTRUCTW*>(lParam);
 		WindowContainer* pWindow = reinterpret_cast<WindowContainer*>(pCreate->lpCreateParams);
 		if (pWindow == nullptr)
@@ -27,7 +28,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		SetWindowLongPtr(hwnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pWindow));
 		SetWindowLongPtr(hwnd, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(HandleMsgRedirect));
 		return pWindow->WindowProc(hwnd, uMsg, wParam, lParam);
-		return DefWindowProc(hwnd, uMsg, wParam, lParam);
+	}
 	default:
 		return DefWindowProc(hwnd, uMsg, wParam, lParam);
 	}
@@ -55,7 +56,7 @@ bool RenderWindow::Initialize(WindowContainer* pWindowContainer, HINSTANCE hInst
 	ShowWindow(this->handle, SW_SHOW);
 	SetForegroundWindow(this->handle);
 	SetFocus(this->handle);
-	return false;
+	return true;
 }
 
 
@@ -63,7 +64,7 @@ bool RenderWindow::ProcessMessages()
 {
 	MSG msg;
 	ZeroMemory(&msg, sizeof(MSG));
-	if (PeekMessage(&msg, this->handle, 0, 0, PM_REMOVE))
+	while(PeekMessage(&msg, this->handle, 0, 0, PM_REMOVE))
 	{
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
@@ -81,6 +82,11 @@ bool RenderWindow::ProcessMessages()
 	
 	return true;
 }
+
+HWND RenderWindow::GetHWND() const
+{
+	return this->handle;
+}
 RenderWindow::~RenderWindow()
 {
 	if (this->handle != NULL)
@@ -93,7 +99,7 @@ void RenderWindow::RegisterWindowClass()
 {
 	WNDCLASSEX wc;
 	wc.style = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
-	wc.lpfnWndProc = WindowProc;
+	wc.lpfnWndProc = HandleMessageSetup;
 	wc.cbClsExtra = 0;
 	wc.cbWndExtra = 0;
 	wc.hInstance = this->hInstance;

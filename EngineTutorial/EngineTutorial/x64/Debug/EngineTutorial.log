@@ -1,11 +1,2 @@
-﻿  Engine.cpp
-  main.cpp
-  RenderWindow.cpp
-d:\jpressdirectx\checkouts\dxtutorial\enginetutorial\enginetutorial\renderwindow.cpp(31): error C2361: initialization of 'pWindow' is skipped by 'default' label
-  d:\jpressdirectx\checkouts\dxtutorial\enginetutorial\enginetutorial\renderwindow.cpp(21): note: see declaration of 'pWindow'
-d:\jpressdirectx\checkouts\dxtutorial\enginetutorial\enginetutorial\renderwindow.cpp(31): error C2361: initialization of 'pCreate' is skipped by 'default' label
-  d:\jpressdirectx\checkouts\dxtutorial\enginetutorial\enginetutorial\renderwindow.cpp(20): note: see declaration of 'pCreate'
-  WindowContainer.cpp
-d:\jpressdirectx\checkouts\dxtutorial\enginetutorial\enginetutorial\windowcontainer.cpp(5): error C2664: 'void OutputDebugStringW(LPCWSTR)': cannot convert argument 1 from 'const char [35]' to 'LPCWSTR'
-  d:\jpressdirectx\checkouts\dxtutorial\enginetutorial\enginetutorial\windowcontainer.cpp(5): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
-  Generating Code...
+﻿  Graphics.cpp
+  EngineTutorial.vcxproj -> D:\JPressDirectX\checkouts\DXTutorial\EngineTutorial\x64\Debug\EngineTutorial.exe
