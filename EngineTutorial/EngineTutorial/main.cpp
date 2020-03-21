@@ -8,7 +8,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_ int nCmdShow)
 {
 	Engine engine;
-	if (engine.Initialize(hInstance, "Title", "MyWindowClass", 800, 500))
+	if (engine.Initialize(hInstance, "Title", "MyWindowClass", 400, 300))
 	{
 		while (engine.ProcessMessages() == true)
 		{
